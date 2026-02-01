@@ -1,0 +1,22 @@
+<div class="p-4">
+      <div class="card border-0 shadow-sm p-4 mb-4">
+        <h4 class="fw-bold">Winning Watchlist</h4>
+        <div class="d-flex gap-2">
+          <input [(ngModel)]="name" class="form-control" placeholder="Product Name">
+          <button class="btn btn-primary" (click)="add()">Add</button>
+          <button class="btn btn-outline-success" (click)="csv.click()">Bulk Import</button>
+          <input #csv type="file" (change)="import($event)" hidden accept=".csv">
+        </div>
+      </div>
+
+      <div class="row g-3">
+        @for (w of service.allWinners(); track w.id) {
+          <div class="col-md-4">
+            <div class="card p-3 border-0 shadow-sm d-flex flex-row justify-content-between">
+              <span class="fw-bold">{{ w.name }}</span>
+              <button class="btn btn-sm btn-link text-danger" (click)="service.deleteWinner(w.id)">Delete</button>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
