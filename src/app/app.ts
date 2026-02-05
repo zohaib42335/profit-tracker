@@ -1,4 +1,4 @@
-import { Component, inject, viewChild, ElementRef, effect } from '@angular/core';
+import { Component, inject, viewChild, ElementRef, effect, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Chart, registerables } from 'chart.js';
@@ -18,5 +18,19 @@ export class App {
   title = 'HHC Profit Tracker';
   service = inject(TrackerService);
 
+  isSidebarOpen = signal(true);
+
+  toggleSidebar() {
+    this.isSidebarOpen.update(val => !val);
+  }
+
+  closeOnMobile() {
+    if (window.innerWidth < 992) {
+      this.isSidebarOpen.set(false);
+    }
+  }
+  }
+ 
+
+
   
-}

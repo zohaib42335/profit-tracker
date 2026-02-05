@@ -1,36 +1,40 @@
-<div class="d-flex" id="wrapper">
-  <div class="bg-dark text-white border-end" id="sidebar-wrapper">
-    <div class="sidebar-heading border-bottom p-4">
-      <h4 class="fw-bold mb-0 text-primary">HHC <span class="text-white">PRO</span></h4>
+<div class="app-shell">
+  @if (isSidebarOpen()) {
+    <div class="mobile-overlay" (click)="toggleSidebar()"></div>
+  }
+
+  <aside class="sidebar-menu bg-dark shadow" [class.active]="isSidebarOpen()">
+    <div class="p-4 d-flex justify-content-between align-items-center border-bottom border-secondary">
+      <h4 class="text-primary fw-bold mb-0">HHC <span class="text-white">PRO</span></h4>
+      <button class="btn btn-link text-white d-lg-none" (click)="toggleSidebar()">
+        <i class="fa-solid fa-xmark fs-4"></i>
+      </button>
     </div>
-    <div class="list-group list-group-flush">
-      <a routerLink="/dashboard" 
-         routerLinkActive="active-link" 
-         class="list-group-item list-group-item-action bg-dark text-white p-3 border-0">
-        <i class="bi bi-speedometer2 me-2"></i> Dashboard
+
+    <nav class="p-3">
+      <a routerLink="/dashboard" routerLinkActive="active-btn" (click)="closeOnMobile()"
+         class="nav-link-custom mb-2">
+        <i class="fa-solid fa-gauge-high me-3"></i> Dashboard
       </a>
-      <a routerLink="/winners" 
-         routerLinkActive="active-link" 
-         class="list-group-item list-group-item-action bg-dark text-white p-3 border-0">
-        <i class="bi bi-trophy me-2"></i> Winning Products
+      <a routerLink="/winners" routerLinkActive="active-btn" (click)="closeOnMobile()"
+         class="nav-link-custom mb-2">
+        <i class="fa-solid fa-trophy me-3 text-warning"></i> Winners
       </a>
-    </div>
-    <div class="mt-auto p-4 small text-muted">
-      
-    </div>
-  </div>
-  
-  <div id="page-content-wrapper" class="flex-grow-1">
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4 py-3">
-      <span class="navbar-brand mb-0 h1 fw-bold text-gray-800">Profit & Trends</span>
-        
     </nav>
-    
-    
-    <div class="container-fluid p-0">
+  </aside>
+
+  <main class="content-area">
+    <nav class="navbar navbar-white bg-white border-bottom px-3 sticky-top">
+      <button class="btn btn-primary d-flex align-items-center justify-content-center" 
+              (click)="toggleSidebar()" style="width: 45px; height: 45px;">
+        <i class="fa-solid fa-bars fs-4"></i>
+      </button>
+      
+      <span class="ms-3 h5 mb-0 fw-bold">Financial Control</span>
+    </nav>
+
+    <div class="container-fluid p-3">
       <router-outlet></router-outlet>
     </div>
-    
-  </div>
-  
+  </main>
 </div>

@@ -42,3 +42,39 @@
   font-size: 1rem;
   vertical-align: middle;
 }
+
+/* Ensure the container doesn't overflow on tiny screens */
+.container-fluid {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Make tables scrollable on small screens but look good on large */
+.table-responsive {
+  border: none;
+}
+
+/* Custom switch size for mobile tapping */
+.form-check-input {
+  cursor: pointer;
+  width: 2.5em;
+  height: 1.25em;
+}
+
+/* Chart container must be relative for Chart.js to resize */
+.chart-container {
+  min-height: 200px;
+}
+
+/* Tooltip/Truncate fix for long product names */
+.text-truncate {
+  display: inline-block;
+  max-width: 150px;
+  vertical-align: bottom;
+}
+
+@media (max-width: 576px) {
+  h2 { font-size: 1.5rem; }
+  .btn-sm { padding: 0.4rem 0.6rem; }
+  .text-truncate { max-width: 100px; }
+}

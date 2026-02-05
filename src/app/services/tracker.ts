@@ -34,12 +34,18 @@ export class TrackerService {
 
   // --- Sales Actions ---
   addSale(data: Omit<Transaction, 'id' | 'profit' | 'status'>) {
-    const profit = data.sellingPrice - (data.hhcCost + data.adSpend);
-    this.sales.update((prev) => [
-      { ...data, id: crypto.randomUUID(), profit, status: 'Delivered' },
-      ...prev,
-    ]);
-  }
+  // Logic: (Revenue - Product Cost) * Qty - Ads
+  const totalRevenue = data.sellingPrice * data.quantity;
+  const totalProductCost = data.hhcCost * data.quantity;
+  const profit = totalRevenue - totalProductCost - data.adSpend;
+
+  this.sales.update(prev => [{ 
+    ...data, 
+    id: crypto.randomUUID(), 
+    profit, 
+    status: 'Delivered' 
+  }, ...prev]);
+}
 
   toggleReturn(id: string) {
     this.sales.update((list) =>
@@ -105,39 +111,51 @@ export class TrackerService {
   });
 
   // 2. Global ROAS (Revenue / Ad Spend)
-  globalRoas = computed(() => {
-    const delivered = this.allSales().filter((s) => s.status === 'Delivered');
-    const totalRevenue = delivered.reduce((acc, s) => acc + s.sellingPrice, 0);
-    const totalAds = this.allSales().reduce((acc, s) => acc + s.adSpend, 0);
-    return totalAds > 0 ? totalRevenue / totalAds : 0;
-  });
+ globalRoas = computed(() => {
+  const allSales = this.allSales();
+  if (allSales.length === 0) return 0;
+
+  // Sum up Total Revenue (Price * Quantity)
+  const totalRevenue = allSales.reduce((acc, s) => {
+    // Only count delivered items for ROAS
+    return s.status === 'Delivered' ? acc + (s.sellingPrice * s.quantity) : acc;
+  }, 0);
+  // Sum up Total Ad Spend (This is already the total for the entry)
+  const totalAds = allSales.reduce((acc, s) => acc + s.adSpend, 0);
+
+  return totalAds > 0 ? (totalRevenue / totalAds) : 0;
+});
 
   // 3. Product Performance Analysis (Scale vs Kill)
   productAnalysis = computed(() => {
-    const stats = new Map<string, { rev: number; ads: number; rto: number; count: number }>();
-
-    this.allSales().forEach((s) => {
-      const current = stats.get(s.productName) || { rev: 0, ads: 0, rto: 0, count: 0 };
-      current.count++;
-      current.ads += s.adSpend;
-      if (s.status === 'Delivered') current.rev += s.sellingPrice;
-      else current.rto++;
-      stats.set(s.productName, current);
-    });
-
-    return Array.from(stats.entries()).map(([name, data]) => {
-      const roas = data.ads > 0 ? data.rev / data.ads : 0;
-      const rtoPerc = (data.rto / data.count) * 100;
-
-      // Senior Logic: Scale if ROAS > 3 and RTO < 20%
-      // Kill if ROAS < 2 or RTO > 30%
-      let recommendation = 'HOLD';
-      if (roas >= 3 && rtoPerc < 20) recommendation = 'SCALE';
-      else if (roas < 2 || rtoPerc > 30) recommendation = 'KILL';
-
-      return { name, roas, rtoPerc, recommendation };
-    });
+  const stats = new Map<string, { rev: number, ads: number, rto: number, count: number }>();
+  
+  this.allSales().forEach(s => {
+    const current = stats.get(s.productName) || { rev: 0, ads: 0, rto: 0, count: 0 };
+    
+    // Revenue must be Price * Quantity
+    if (s.status === 'Delivered') {
+        current.rev += (s.sellingPrice * s.quantity);
+    } else {
+        current.rto += s.quantity; // Track RTO units
+    }
+    
+    current.ads += s.adSpend;
+    current.count += s.quantity; // Total units sold
+    stats.set(s.productName, current);
   });
+
+  return Array.from(stats.entries()).map(([name, data]) => {
+    const roas = data.ads > 0 ? (data.rev / data.ads) : 0;
+    const rtoPerc = (data.rto / data.count) * 100;
+    
+    let recommendation = 'HOLD';
+    if (roas >= 3 && rtoPerc < 20) recommendation = 'SCALE';
+    else if (roas < 2 || rtoPerc > 30) recommendation = 'KILL';
+
+    return { name, roas, rtoPerc, recommendation };
+  });
+});
   deleteSale(id: string) {
     // Senior Engineer Tip: Always use a functional update to ensure state consistency
     this.sales.update((list) => list.filter((sale) => sale.id !== id));

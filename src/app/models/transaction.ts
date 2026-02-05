@@ -4,6 +4,7 @@ export interface Transaction {
   id: string;
   date: string; // ISO string YYYY-MM-DD
   productName: string;
+  quantity: number;
   sellingPrice: number;
   hhcCost: number;
   adSpend: number;

@@ -16,7 +16,7 @@ export class Dashboard {
   chartCanvas = viewChild<ElementRef<HTMLCanvasElement>>('profitChart');
   private chart?: Chart;
 
-  sale = { productName: '', sellingPrice: 0, hhcCost: 0, adSpend: 0, date: new Date().toISOString().split('T')[0] };
+  sale = { productName: '', sellingPrice: 0,quantity: 1, hhcCost: 0, adSpend: 0, date: new Date().toISOString().split('T')[0] };
 
   constructor() {
     effect(() => this.updateChart(this.service.allSales()));
@@ -25,6 +25,7 @@ export class Dashboard {
   submit() {
     this.service.addSale({...this.sale});
     this.sale.productName = '';
+    this.sale.quantity= 1;
   }
 
   private updateChart(sales: any[]) {
