@@ -82,11 +82,11 @@ export class TrackerService {
       type === 'daily' ? s.date === today : s.date.startsWith(month),
     );
 
-    const headers = 'Date,Product,Price,HHC Cost,Ads,Status,Profit\n';
+    const headers = 'Date,Product,Price,HHC Cost,Ads,Status,Profit,ROAS\n';
     const csv = data
       .map(
         (s) =>
-          `${s.date},${s.productName},${s.sellingPrice},${s.hhcCost},${s.adSpend},${s.status},${s.profit}`,
+          `${s.date},${s.productName},${s.sellingPrice},${s.hhcCost},${s.adSpend},${s.status},${s.profit},${s.adSpend > 0 ? ((s.sellingPrice * s.quantity) / s.adSpend).toFixed(2) : 'N/A'}`,
       )
       .join('\n');
 

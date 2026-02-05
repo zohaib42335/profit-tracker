@@ -20,14 +20,17 @@
       <div class="card border-0 shadow-sm p-3 p-md-4">
         <h5 class="fw-bold mb-3"><i class="fa-solid fa-cart-plus me-2 text-primary"></i>Log Sale</h5>
         <div class="mb-2">
+         <label class="small text-muted mb-1">Product Name</label>
           <input [(ngModel)]="sale.productName" class="form-control" placeholder="Product Name">
         </div>
         
         <div class="row g-2 mb-2">
           <div class="col-8">
+            <label class="small text-muted mb-1">Unit price</label>
             <input type="number" [(ngModel)]="sale.sellingPrice" class="form-control" placeholder="Unit Price">
           </div>
           <div class="col-4">
+            <label class="small text-muted mb-1">Quantity</label>
             <input type="number" [(ngModel)]="sale.quantity" class="form-control" placeholder="Qty">
           </div>
         </div>
@@ -38,7 +41,7 @@
             <input type="number" [(ngModel)]="sale.hhcCost" class="form-control" placeholder="HHC Cost">
           </div>
           <div class="col-6">
-            <label class="small text-muted mb-1">Total Ads</label>
+            <label class="small text-muted mb-1">Total Ads spend</label>
             <input type="number" [(ngModel)]="sale.adSpend" class="form-control" placeholder="Ad Spend">
           </div>
         </div>
