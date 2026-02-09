@@ -1,59 +1,66 @@
-# ProfitTrackerApp
+HHC Pro Tracker 📊
+A High-Performance Financial Dashboard for E-Commerce Scaling
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.1.
+🚀 Project Overview:
+HHC Pro Tracker is a reactive web application built to help dropshippers and e-commerce entrepreneurs track their daily net profit, ROAS, and RTO (Return to Origin) rates. Unlike simple spreadsheets, this tool provides Automated Scaling Insights, telling users exactly which products to "Scale," "Kill," or "Optimize" based on real-time data.
+✨ Key Features:
+Reactive Dashboard: Uses Angular Signals for instantaneous UI updates across all components.
 
-## Development server
+Intelligent Analytics: Calculates ROAS and Net Profit considering unit price, quantity, and total ad spend.
 
-To start a local development server, run:
+Scaling Insights: A built-in logic engine that provides business recommendations based on profit margins.
 
-```bash
-ng serve
-```
+Data Visualization: Interactive Profit Trend Charts powered by Chart.js.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Mobile-First Design: Fully responsive collapsible sidebar and grid system for tracking on the go.
 
-## Code scaffolding
+Data Persistence: Automatic synchronization with LocalStorage.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Export Capabilities: Generate and download CSV reports for daily or monthly bookkeeping.
+A professional GitHub README is your "silent interview." It shows that you can document your code, explain your architecture, and think like a product owner.
 
-```bash
-ng generate component component-name
-```
+Here is a high-quality README template you can copy and paste into your project’s README.md file.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+HHC Pro Tracker 📊
+A High-Performance Financial Dashboard for E-Commerce Scaling
 
-```bash
-ng generate --help
-```
+🚀 Project Overview
+HHC Pro Tracker is a reactive web application built to help dropshippers and e-commerce entrepreneurs track their daily net profit, ROAS, and RTO (Return to Origin) rates. Unlike simple spreadsheets, this tool provides Automated Scaling Insights, telling users exactly which products to "Scale," "Kill," or "Optimize" based on real-time data.
 
-## Building
+✨ Key Features
+Reactive Dashboard: Uses Angular Signals for instantaneous UI updates across all components.
 
-To build the project run:
+Intelligent Analytics: Calculates ROAS and Net Profit considering unit price, quantity, and total ad spend.
 
-```bash
-ng build
-```
+Scaling Insights: A built-in logic engine that provides business recommendations based on profit margins.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Data Visualization: Interactive Profit Trend Charts powered by Chart.js.
 
-## Running unit tests
+Mobile-First Design: Fully responsive collapsible sidebar and grid system for tracking on the go.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Data Persistence: Automatic synchronization with LocalStorage.
 
-```bash
-ng test
-```
+Export Capabilities: Generate and download CSV reports for daily or monthly bookkeeping.
 
-## Running end-to-end tests
+🛠️ Tech Stack:
+Core: Angular 18+ (Signals, Computed State, Standalone Components)
 
-For end-to-end (e2e) testing, run:
+UI Framework: Bootstrap 5 (Customized with CSS3)
 
-```bash
-ng e2e
-```
+Charts: Chart.js
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Icons: FontAwesome 6
 
-## Additional Resources
+Language: TypeScript
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+📐 Architecture & Logic:
+Profit Formula
+The application ensures financial accuracy by calculating profit at the batch level:
+  Net Profit = (Selling Price - HHC Cost) \times Quantity - Total Ad Spend$$ROAS 
+
+🧠 What I Learned
+State Management: Implementing Signals to manage complex financial data flows without the overhead of RxJS or NgRx for local-first apps.
+
+Responsive Architecture: Mastering the transition between a desktop sidebar and a mobile "Hamburger" menu with backdrop overlays.
+
+Data Integrity: Handling edge cases in financial calculations (e.g., preventing division by zero in ROAS math).
