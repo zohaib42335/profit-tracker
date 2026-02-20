@@ -112,11 +112,14 @@ Edge cases (e.g., division by zero) are handled to maintain data integrity.
 * Dashboard Overview
   ![33](https://github.com/user-attachments/assets/044e6d75-9ae5-4bc1-b6ec-4c5a981bd2f1)
 
-* Profit Trend Chart
-  <img width="721" height="276" alt="image" src="https://github.com/user-attachments/assets/f381a11b-1d88-439d-b654-3fa6cdb7b8db" />
+  ![bb](https://github.com/user-attachments/assets/b3a524a1-7912-4d22-8db7-380dcf4dd35e)
 
-* Scaling Recommendation Panel
-* Mobile View Layout
+  ![aa](https://github.com/user-attachments/assets/0d9e8e28-9ed5-4aed-9689-a76c0495a252)
+
+  ![dd](https://github.com/user-attachments/assets/965ca071-152c-49c6-b6d0-2d9c59e0cfe6)
+
+  ![cc](https://github.com/user-attachments/assets/b6c9b082-6112-4ab0-9d19-a46351dc9e28)
+
 
 ---
 
