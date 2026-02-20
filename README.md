@@ -1,66 +1,183 @@
-HHC Pro Tracker 📊
-A High-Performance Financial Dashboard for E-Commerce Scaling
+# 📊 HHC Pro Tracker
 
-🚀 Project Overview:
-HHC Pro Tracker is a reactive web application built to help dropshippers and e-commerce entrepreneurs track their daily net profit, ROAS, and RTO (Return to Origin) rates. Unlike simple spreadsheets, this tool provides Automated Scaling Insights, telling users exactly which products to "Scale," "Kill," or "Optimize" based on real-time data.
-✨ Key Features:
-Reactive Dashboard: Uses Angular Signals for instantaneous UI updates across all components.
+### A High-Performance Financial Dashboard for E-Commerce Scaling
 
-Intelligent Analytics: Calculates ROAS and Net Profit considering unit price, quantity, and total ad spend.
+---
 
-Scaling Insights: A built-in logic engine that provides business recommendations based on profit margins.
+## 🚀 Project Overview
 
-Data Visualization: Interactive Profit Trend Charts powered by Chart.js.
+**HHC Pro Tracker** is a reactive financial dashboard designed for dropshippers and e-commerce entrepreneurs who need accurate, real-time insights into their product performance.
 
-Mobile-First Design: Fully responsive collapsible sidebar and grid system for tracking on the go.
+Unlike traditional spreadsheets, this application provides **automated scaling intelligence**, helping users decide whether to:
 
-Data Persistence: Automatic synchronization with LocalStorage.
+* ✅ Scale
+* ❌ Kill
+* ⚙ Optimize
 
-Export Capabilities: Generate and download CSV reports for daily or monthly bookkeeping.
-A professional GitHub README is your "silent interview." It shows that you can document your code, explain your architecture, and think like a product owner.
+based on real-time calculations of **Net Profit, ROAS (Return on Ad Spend), and RTO (Return to Origin)**.
 
-Here is a high-quality README template you can copy and paste into your project’s README.md file.
+The goal of this project is to combine financial clarity with high-performance frontend architecture using Angular Signals.
 
-HHC Pro Tracker 📊
-A High-Performance Financial Dashboard for E-Commerce Scaling
+---
 
-🚀 Project Overview
-HHC Pro Tracker is a reactive web application built to help dropshippers and e-commerce entrepreneurs track their daily net profit, ROAS, and RTO (Return to Origin) rates. Unlike simple spreadsheets, this tool provides Automated Scaling Insights, telling users exactly which products to "Scale," "Kill," or "Optimize" based on real-time data.
+## ✨ Key Features
 
-✨ Key Features
-Reactive Dashboard: Uses Angular Signals for instantaneous UI updates across all components.
+### ⚡ Reactive Dashboard
 
-Intelligent Analytics: Calculates ROAS and Net Profit considering unit price, quantity, and total ad spend.
+Built using **Angular Signals**, enabling instantaneous UI updates across all components without unnecessary re-renders.
 
-Scaling Insights: A built-in logic engine that provides business recommendations based on profit margins.
+### 📈 Intelligent Analytics
 
-Data Visualization: Interactive Profit Trend Charts powered by Chart.js.
+Automatically calculates:
 
-Mobile-First Design: Fully responsive collapsible sidebar and grid system for tracking on the go.
+* Net Profit
+* ROAS
+* RTO Rate
 
-Data Persistence: Automatic synchronization with LocalStorage.
+based on:
 
-Export Capabilities: Generate and download CSV reports for daily or monthly bookkeeping.
+* Unit selling price
+* HHC cost
+* Quantity sold
+* Total ad spend
 
-🛠️ Tech Stack:
-Core: Angular 18+ (Signals, Computed State, Standalone Components)
+### 🧠 Scaling Insights Engine
 
-UI Framework: Bootstrap 5 (Customized with CSS3)
+A built-in logic engine evaluates product performance and generates actionable recommendations:
 
-Charts: Chart.js
+* “Scale”
+* “Kill”
+* “Optimize”
 
-Icons: FontAwesome 6
+### 📊 Data Visualization
 
-Language: TypeScript
+Interactive **Profit Trend Charts** powered by Chart.js for monthly and daily tracking.
 
-📐 Architecture & Logic:
-Profit Formula
+### 📱 Mobile-First Design
+
+* Fully responsive grid layout
+* Collapsible sidebar
+* Mobile hamburger menu with backdrop overlay
+
+### 💾 Data Persistence
+
+Automatic synchronization using **LocalStorage** for a local-first experience.
+
+### 📤 Export Capabilities
+
+Generate and download **CSV reports** for daily or monthly bookkeeping.
+
+---
+
+## 🛠 Tech Stack
+
+* **Framework:** Angular 18+ (Signals, Computed State, Standalone Components)
+* **Language:** TypeScript
+* **UI Framework:** Bootstrap 5 (Customized with CSS3)
+* **Charts:** Chart.js
+* **Icons:** FontAwesome 6
+
+---
+
+## 📐 Architecture & Logic
+
+This project follows a clean, reactive architecture with a strong focus on performance and scalability.
+
+### 🔹 State Management
+
+* Angular Signals used as the reactive state layer
+* Computed state for derived financial metrics
+* No heavy state libraries (optimized for local-first architecture)
+
+### 🔹 Profit Formula
+
 The application ensures financial accuracy by calculating profit at the batch level:
-  Net Profit = (Selling Price - HHC Cost) \times Quantity - Total Ad Spend$$ROAS 
 
-🧠 What I Learned
-State Management: Implementing Signals to manage complex financial data flows without the overhead of RxJS or NgRx for local-first apps.
+```
+Net Profit = (Selling Price − HHC Cost) × Quantity − Total Ad Spend
+```
 
-Responsive Architecture: Mastering the transition between a desktop sidebar and a mobile "Hamburger" menu with backdrop overlays.
+### 🔹 ROAS Formula
 
-Data Integrity: Handling edge cases in financial calculations (e.g., preventing division by zero in ROAS math).
+```
+ROAS = Revenue / Total Ad Spend
+```
+
+Edge cases (e.g., division by zero) are handled to maintain data integrity.
+
+---
+
+## 🖼 Screenshots
+
+* Dashboard Overview
+  ![33](https://github.com/user-attachments/assets/044e6d75-9ae5-4bc1-b6ec-4c5a981bd2f1)
+
+* Profit Trend Chart
+  <img width="721" height="276" alt="image" src="https://github.com/user-attachments/assets/f381a11b-1d88-439d-b654-3fa6cdb7b8db" />
+
+* Scaling Recommendation Panel
+* Mobile View Layout
+
+---
+
+## 📦 Installation & Setup
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/your-username/hhc-pro-tracker.git
+cd hhc-pro-tracker
+```
+
+### 2️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Run the development server
+
+```bash
+ng serve
+```
+
+Navigate to:
+
+```
+http://localhost:4200/
+```
+
+The app will automatically reload when source files are modified.
+
+---
+
+## 🧠 What I Learned
+
+### State Management
+
+Implemented Angular Signals to manage complex financial data flows efficiently without the overhead of RxJS or NgRx for a local-first app.
+
+### Responsive Architecture
+
+Designed a scalable layout that smoothly transitions between:
+
+* Desktop sidebar navigation
+* Mobile hamburger menu with backdrop overlay
+
+### Data Integrity
+
+Handled financial edge cases, including:
+
+* Preventing division by zero in ROAS calculations
+* Ensuring accurate batch-level profit computation
+
+---
+
+## 🎯 Project Purpose
+
+This project demonstrates:
+
+* Real-world financial logic implementation
+* Scalable Angular architecture
+* Clean state management using Signals
+* Production-ready UI structure
